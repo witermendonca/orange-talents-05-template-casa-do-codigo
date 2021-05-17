@@ -29,8 +29,8 @@ public class AutorDTO {
 		return descricao;
 	}
 
-	public Autor converte() {
-		return new Autor(nome, email, descricao);
+	public Autor toModel() {
+		return new Autor(this.nome, this.email, this.descricao);
 	}
 
 }

@@ -1,6 +1,5 @@
 package br.com.zupacademy.witer.casadocodigo.autor;
 
-
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -40,8 +39,5 @@ public class Autor {
 		this.email = email;
 		this.descricao = descricao;
 	}
-	
-	
 
-	
 }

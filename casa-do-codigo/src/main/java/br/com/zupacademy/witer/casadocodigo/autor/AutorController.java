@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/autor")
+@RequestMapping("/autores")
 public class AutorController {
 
 	private final AutorRepository autorRepository;
@@ -18,17 +18,16 @@ public class AutorController {
 	public AutorController(AutorRepository autorRepository) {
 		this.autorRepository = autorRepository;
 	}
-	
+
 	@PostMapping
 	@Transactional
-	public ResponseEntity<AutorDTO> cadastrar(@RequestBody @Valid AutorDTO autorDTO){
-		
-		Autor autor = autorDTO.converte();
-		
+	public ResponseEntity<AutorDTO> cadastrarAutor(@RequestBody @Valid AutorDTO autorDTO) {
+
+		Autor autor = autorDTO.toModel();
+
 		autorRepository.save(autor);
-		
+
 		return ResponseEntity.ok(autorDTO);
 	}
-	
-	
+
 }
