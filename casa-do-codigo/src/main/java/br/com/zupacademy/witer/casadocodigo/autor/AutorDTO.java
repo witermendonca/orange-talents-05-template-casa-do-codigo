@@ -4,6 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.zupacademy.witer.casadocodigo.validacao.UniqueValue;
+
 public class AutorDTO {
 
 	@NotBlank
@@ -11,6 +13,7 @@ public class AutorDTO {
 
 	@NotBlank
 	@Email
+	@UniqueValue(domainClass = Autor.class, fieldName = "email", message = "Autor(a) com E-mail já cadastrado." )
 	private String email;
 
 	@NotBlank

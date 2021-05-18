@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/autores")
 public class AutorController {
 
-	@Autowired
-	private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
+//	@Autowired
+//	private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
 
 	@Autowired
 	private AutorRepository autorRepository;
-
-	@InitBinder
-	public void init(WebDataBinder binder) {
-		// chama validador de inicio.
-		binder.addValidators(proibeEmailDuplicadoAutorValidator);
-	}
+//
+//	@InitBinder
+//	public void init(WebDataBinder binder) {
+//		// chama validador de inicio.
+//		binder.addValidators(proibeEmailDuplicadoAutorValidator);
+//	}
 
 	@PostMapping
 	@Transactional
