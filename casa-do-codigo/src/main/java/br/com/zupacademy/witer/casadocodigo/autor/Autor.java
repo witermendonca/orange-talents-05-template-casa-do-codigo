@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,14 +20,14 @@ public class Autor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty
+	@NotBlank
 	private String nome;
 
-	@NotEmpty
+	@NotBlank
 	@Email
 	private String email;
 
-	@NotEmpty
+	@NotBlank
 	@Size(max = 400)
 	private String descricao;
 
@@ -38,7 +38,7 @@ public class Autor {
 	public Autor() {
 	}
 
-	public Autor(@NotNull String nome, @NotNull @Email String email, @NotNull @Size(max = 400) String descricao) {
+	public Autor(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
 		this.nome = nome;
 		this.email = email;
 		this.descricao = descricao;
