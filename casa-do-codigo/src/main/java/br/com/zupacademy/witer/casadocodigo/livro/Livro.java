@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -14,6 +15,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.ISBN;
+import org.hibernate.validator.constraints.ISBN.Type;
 
 import br.com.zupacademy.witer.casadocodigo.autor.Autor;
 import br.com.zupacademy.witer.casadocodigo.categoria.Categoria;
@@ -34,6 +38,7 @@ public class Livro {
 	private String resumo;
 
 	@NotBlank
+	@Lob // define campo grande no banco.
 	private String sumario;
 
 	@NotNull
@@ -45,6 +50,7 @@ public class Livro {
 	private Integer numeroPaginas;
 
 	@NotBlank
+	@ISBN(type = Type.ANY)
 	private String isbn;
 
 	@NotNull
@@ -79,6 +85,14 @@ public class Livro {
 		this.dataPublicacao = dataPublicacao;
 		this.autor = autor;
 		this.categoria = categoria;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getTitulo() {
+		return titulo;
 	}
 
 }

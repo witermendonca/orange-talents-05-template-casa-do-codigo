@@ -11,6 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.ISBN;
+import org.hibernate.validator.constraints.ISBN.Type;
 import org.springframework.util.Assert;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -45,6 +47,7 @@ public class NovoLivroRequest {
 	private Integer numeroPaginas;
 
 	@NotBlank
+	@ISBN(type = Type.ANY)
 	@UniqueValue(domainClass = Livro.class, fieldName = "isbn", message = "Isbn de livro já cadastrado.")
 	private String isbn;
 
