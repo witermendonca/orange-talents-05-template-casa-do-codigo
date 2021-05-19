@@ -1,9 +1,9 @@
 package br.com.zupacademy.witer.casadocodigo.livro;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-import br.com.zupacademy.witer.casadocodigo.autor.Autor;
+import br.com.zupacademy.witer.casadocodigo.autor.InfAutorLivro;
 
 public class InfoLivroRequest {
 
@@ -21,9 +21,9 @@ public class InfoLivroRequest {
 
 	private String isbn;
 
-	private LocalDate dataPublicacao;
+	private String dataPublicacao;
 
-	private Autor autor;
+	private InfAutorLivro autor;
 
 	public InfoLivroRequest(Livro livro) {
 		this.id = livro.getId();
@@ -33,8 +33,8 @@ public class InfoLivroRequest {
 		this.preco = livro.getPreco();
 		this.numeroPaginas = livro.getNumeroPaginas();
 		this.isbn = livro.getIsbn();
-		this.dataPublicacao = livro.getDataPublicacao();
-		this.autor = livro.getAutor();
+		this.dataPublicacao = livro.getDataPublicacao().format(DateTimeFormatter.ofPattern("dd/MM/yyy"));
+		this.autor = new InfAutorLivro(livro.getAutor());
 	}
 
 	public Long getId() {
@@ -65,11 +65,11 @@ public class InfoLivroRequest {
 		return isbn;
 	}
 
-	public LocalDate getDataPublicacao() {
+	public String getDataPublicacao() {
 		return dataPublicacao;
 	}
 
-	public Autor getAutor() {
+	public InfAutorLivro getAutor() {
 		return autor;
 	}
 

@@ -123,8 +123,4 @@ public class Livro {
 		return autor;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
 }
