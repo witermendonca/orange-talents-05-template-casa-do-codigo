@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.witer.casadocodigo.autor.AutorRepository;
-import br.com.zupacademy.witer.casadocodigo.categoria.CategoriaRepository;
-
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
@@ -30,6 +27,9 @@ public class LivroController {
 //	@Autowired
 //	private CategoriaRepository categoriaRepository;
 //	
+//	Anotações para fins didáticos referente a método Post cadastra livro,
+//	refatoração com uso de EntityManager para com a classe NovoLivroRequest.
+
 //	@Autowired
 //	private AutorRepository autorRepository;
 
@@ -46,26 +46,26 @@ public class LivroController {
 
 		return ResponseEntity.ok(novoLivroRequest);
 	}
-	
+
 	@GetMapping
 	@Transactional
-	public List<ListaLivroResquest> listaLivros(){
-		 List<Livro> listaLivos = livroRepository.findAll();
-		 
-		 return ListaLivroResquest.toDTO(listaLivos);
+	public List<ListaLivroResquest> listaLivros() {
+		List<Livro> listaLivos = livroRepository.findAll();
+
+		return ListaLivroResquest.toDTO(listaLivos);
 	}
-	
+
 	@GetMapping("/{id}")
 	@Transactional
-	public ResponseEntity<InfoLivroRequest> infoLivro(@PathVariable Long id){
-		
+	public ResponseEntity<InfoLivroRequest> infoLivro(@PathVariable Long id) {
+
 		Optional<Livro> livroExistente = livroRepository.findById(id);
-		
-		if(livroExistente.isPresent()) {
+
+		if (livroExistente.isPresent()) {
 			return ResponseEntity.ok(new InfoLivroRequest(livroExistente.get()));
-		}else {
+		} else {
 			return ResponseEntity.notFound().build();
 		}
-		
+
 	}
 }

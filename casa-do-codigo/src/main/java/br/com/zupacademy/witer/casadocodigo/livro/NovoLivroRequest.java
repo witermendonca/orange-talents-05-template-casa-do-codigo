@@ -19,9 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import br.com.zupacademy.witer.casadocodigo.autor.Autor;
-import br.com.zupacademy.witer.casadocodigo.autor.AutorRepository;
 import br.com.zupacademy.witer.casadocodigo.categoria.Categoria;
-import br.com.zupacademy.witer.casadocodigo.categoria.CategoriaRepository;
 import br.com.zupacademy.witer.casadocodigo.validacao.IdExistente;
 import br.com.zupacademy.witer.casadocodigo.validacao.UniqueValue;
 
